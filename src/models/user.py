@@ -20,9 +20,8 @@ class User(db.Model):
     def check_password(self, password):
         return check_password_hash(self.password, password)
 
-    @staticmethod
-    def _fields():
+    def to_json(self):
         return {
-            'id': fields.Integer,
-            'email': fields.String
+            'id': self.id,
+            'email': self.email
         }
