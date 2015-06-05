@@ -1,8 +1,9 @@
-import config
 from flask import Flask
 from flask.ext.script import Manager
 from flask.ext.migrate import Migrate, MigrateCommand
-from models import db
+
+import config
+from model.abc import db
 
 server = Flask(__name__)
 server.debug = config.DEBUG

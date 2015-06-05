@@ -1,7 +1,9 @@
-from . import db
-from flask.ext.restful import fields
+from werkzeug.security import generate_password_hash, check_password_hash
 
-class User(db.Model):
+from .abc import db, BaseModel
+
+
+class User(db.Model, BaseModel):
     __tablename__ = 'auth_user'
 
     id = db.Column(db.Integer, primary_key=True)
@@ -19,9 +21,3 @@ class User(db.Model):
 
     def check_password(self, password):
         return check_password_hash(self.password, password)
-
-    def to_json(self):
-        return {
-            'id': self.id,
-            'email': self.email
-        }
