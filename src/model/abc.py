@@ -5,6 +5,7 @@ import datetime
 from weakref import WeakValueDictionary
 from flask.ext.sqlalchemy import SQLAlchemy
 from sqlalchemy import inspect
+from sqlalchemy.orm import aliased
 
 
 db = SQLAlchemy()
@@ -17,7 +18,7 @@ class MetaBaseModel(db.Model.__class__):
         try:
             alias = cls.aliases[key]
         except KeyError:
-            alias = cls.__table__.alias()
+            alias = aliased(cls)
             cls.aliases[key] = alias
         return alias
 
