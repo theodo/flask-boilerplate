@@ -14,6 +14,10 @@ db = SQLAlchemy()
 class MetaBaseModel(db.Model.__class__):
     """ Define a metaclass for the BaseModel to implement `__getitem__` for managing aliases """
 
+    def __init__(cls, *args):
+        super().__init__(*args)
+        cls.aliases = WeakValueDictionary()
+
     def __getitem__(cls, key):
         try:
             alias = cls.aliases[key]
@@ -26,8 +30,6 @@ class MetaBaseModel(db.Model.__class__):
 class BaseModel():
     """ Generalize __init__, __repr__ and to_json
         Based on the models columns """
-
-    aliases = WeakValueDictionary()
 
     print_filter = []
     def __repr__(self):
