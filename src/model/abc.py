@@ -31,7 +31,7 @@ class BaseModel():
     """ Generalize __init__, __repr__ and to_json
         Based on the models columns """
 
-    print_filter = []
+    print_filter = ()
     def __repr__(self):
         """ Define a base way to print models
             Columns inside `print_filter` are excluded """
@@ -41,7 +41,7 @@ class BaseModel():
             if column not in self.print_filter
         })
 
-    to_json_filter = []
+    to_json_filter = ()
     @property
     def json(self):
         """ Define a base way to jsonify models
