@@ -1,12 +1,14 @@
+from flask import jsonify
 from flask.ext.restful import Resource
 
-from model.user import db, User
+from model.abc import db
+from model import User
 from util import parse_params
 
 
 class UserListAPI(Resource):
     def get(self):
-        return {'data': [user.json for user in User.query]}
+        return jsonify(data=[user.json for user in User.query])
 
     @parse_params(
         {'name': 'email', 'type': str, 'required': True},

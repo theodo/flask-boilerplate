@@ -1,6 +1,4 @@
-"""
-Define an Abstract Base Class (ABC) for models
-"""
+"""Define an Abstract Base Class (ABC) for models."""
 import datetime
 from weakref import WeakValueDictionary
 from flask.ext.sqlalchemy import SQLAlchemy

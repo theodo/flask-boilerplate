@@ -12,7 +12,7 @@ Accessing containers
 
 Require Docker >= 1.3
 
-```
+```shell
 # use 'docker ps' to see the list of your containers
 docker exec -it flaskboilerplate_db_1 psql -Upostgres
 docker exec -it flaskboilerplate_server_1 bash
@@ -21,7 +21,7 @@ docker exec -it flaskboilerplate_server_1 bash
 Migration process
 -----------------
 
-```
+```shell
 # Prior to the first migration
 docker-compose run --rm server python src/manage.py db init
 
@@ -34,10 +34,17 @@ sudo vim migration/versions/<migration_id>.py
 docker-compose run --rm server python src/manage.py db upgrade
 ```
 
+Run tests
+---------
+
+```shell
+docker-compose run --rm server python -m unittest
+```
+
 Commands
 --------
 
-```
+```shell
 # Screenshot of python vendors
 docker-compose run --rm server pip freeze > requirements.txt
 
