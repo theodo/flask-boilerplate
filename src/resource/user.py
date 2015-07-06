@@ -3,6 +3,7 @@ from flask.ext.restful import Resource
 
 from model.abc import db
 from model import User
+from client import superhero
 from util import parse_params
 
 
@@ -24,4 +25,6 @@ class UserListAPI(Resource):
 class UserAPI(Resource):
     def get(self, id):
         user = User.query.get(id)
-        return user.json
+        user_dict = user.json
+        user_dict['is_superhero'] = superhero.is_superhero(user.email)
+        return user_dict

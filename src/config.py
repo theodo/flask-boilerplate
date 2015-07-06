@@ -19,3 +19,5 @@ logging.basicConfig(
     format='%(levelname)s: %(asctime)s pid:%(process)s module:%(module)s %(message)s',
     datefmt='%d/%m/%y %H:%M:%S',
 )
+
+SUPERHERO_API_URL = os.getenv('HOST', '127.0.0.1:5001')

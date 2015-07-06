@@ -19,19 +19,21 @@ class TestUser(unittest.TestCase):
         db.session.add(self.user)
         db.session.commit()
 
-        self.headers = {'Content-Type': 'application/json'}
-
     def tearDown(self):
         db.session.remove()
         db.drop_all()
 
-    def test_get_user(self):
+    @patch('client.superhero.is_superhero')
+    def test_get_user(self, is_superhero_mock):
+        is_superhero_mock.return_value = True
+
         response = self.client.get(
             '/user/%d' % self.user.id,
         )
         self.assertEqual(response.status_code, 200)
         result = json.loads(response.data.decode('utf-8'))
         self.assertEqual(result['email'], 'joe@example.fr')
+        self.assertEqual(result['is_superhero'], True)
 
 if __name__ == '__main__':
     unittest.main()
