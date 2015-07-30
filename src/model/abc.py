@@ -45,7 +45,7 @@ class BaseModel():
         """ Define a base way to jsonify models
             Columns inside `to_json_filter` are excluded """
         return {
-            column: value if not isinstance(value, datetime.datetime) else value.strftime('%Y-%m-%d')
+            column: value if not isinstance(value, datetime.date) else value.isoformat()
             for column, value in self._to_dict().items()
             if column not in self.to_json_filter
         }
