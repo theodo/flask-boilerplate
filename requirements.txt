@@ -1,5 +1,3 @@
-[33mYou are using pip version 7.0.3, however version 7.1.0 is available.
-You should consider upgrading via the 'pip install --upgrade pip' command.[0m
 alembic==0.7.4
 aniso8601==0.92
 Flask==0.10.1
