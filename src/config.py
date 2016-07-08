@@ -1,7 +1,7 @@
 import os, logging
 
 DEBUG = True
-HOST = os.getenv('HOST', '0.0.0.0')
+HOST = os.getenv('HOST')
 PORT = int(os.getenv('PORT', '5000'))
 
 POSTGRES = {
