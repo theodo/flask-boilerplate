@@ -1,3 +1,5 @@
+# This repo is deprecated, please use https://github.com/antkahn/flask-api-starter-kit instead
+
 Installation
 ------------
 
